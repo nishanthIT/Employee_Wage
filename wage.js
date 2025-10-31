@@ -37,9 +37,33 @@ function createEmployee(id, name, hourlyRate=20){
         console.log(`Hours worked: ${hoursWorked},Daily wage: ${dailyWage}`)
         return {hoursWorked,dailyWage};
     }
+
+        function calculateMonthlyWage(workingDays = 20) {
+        console.log(`\n--- Calculating monthly wage for ${name} ---`);
+        totalWorkingDays = 0;
+        totalWorkingHours = 0;
+        totalWage = 0;
+
+        for (let day = 1; day <= workingDays; day++) {
+            console.log(`\nDay ${day}:`);
+            const { hoursWorked, dailyWage } = calculateDailyWage();
+            if (hoursWorked > 0) totalWorkingDays++;
+            totalWorkingHours += hoursWorked;
+            totalWage += dailyWage;
+        }
+
+        console.log(`\n--- Monthly Summary for ${name} ---`);
+        console.log(`Total Working Days: ${totalWorkingDays}`);
+        console.log(`Total Working Hours: ${totalWorkingHours}`);
+        console.log(`Total Monthly Wage: $${totalWage}`);
+
+        return { totalWorkingDays, totalWorkingHours, totalWage };
+    }
+    
     
     return{
-        calculateDailyWage
+        calculateDailyWage,
+        calculateMonthlyWage
     }
 
 }
