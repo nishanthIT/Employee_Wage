@@ -11,8 +11,37 @@ function createEmployee(id, name, hourlyRate=20){
     let totalWage = 0;
 
     function checkAttendance(){
-        return Math.floor(Math.random()*2)
+        return Math.floor(Math.random()*3)
+    }
+
+    function calculateDailyWage(){
+        const attendance = checkAttendance();
+        console.log(attendance)
+        let hoursWorked = 0
+
+        switch(attendance){
+            case ABSENT:
+                hoursWorked = 0
+                console.log(`${name} is ABSENT `)
+                break
+            case PRESENT:
+                hoursWorked = FULL_TIME_HOURS;
+                console.log(`${name} is PRESENT today (FUll Time)`)
+                break
+            case PART_TIME:
+                hoursWorked= PART_TIME_HOURS;
+                console.log(`${name} is PRESENT  today (PART tiME)`) 
+                break
+        }
+        const dailyWage = hoursWorked * hourlyRate;
+        console.log(`Hours worked: ${hoursWorked},Daily wage: ${dailyWage}`)
+        return {hoursWorked,dailyWage};
     }
     
+    return{
+        calculateDailyWage
+    }
+
 }
 
+export default createEmployee;
