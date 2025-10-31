@@ -37,6 +37,9 @@ function createEmployee(id, name, hourlyRate=20){
         console.log(`Hours worked: ${hoursWorked},Daily wage: ${dailyWage}`)
         return {hoursWorked,dailyWage};
     }
+
+  
+
     
     return{
         calculateDailyWage
